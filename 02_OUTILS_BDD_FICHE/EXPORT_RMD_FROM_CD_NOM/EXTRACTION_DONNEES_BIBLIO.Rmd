@@ -1,0 +1,67 @@
+---
+title: "EXTRACT_BIBLIO"
+author: "Augustin Soulard"
+date: "2023-05-11"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+# knitr::opts_chunk$set(echo = TRUE)
+# API_KEY = read.table("C:/Users/MTDA-029/Documents/1385_Sillans/chatGPT_API_KEY.txt")[1,1]
+# Sys.setenv(
+#     OPENAI_API_KEY = API_KEY
+# )
+# 
+# cat(ask_chatgpt("Bonjour"))
+
+```
+
+```{r cotent1, include=FALSE}
+# library(readxl)
+# BDD_FICHE_FLORE <- read_excel("~/GitHub/FICHE_FLORE/BDD_FICHE_FLORE.xlsx")
+# ESP_TO_EXTRACT = read.table("clipboard")
+# colnames(ESP_TO_EXTRACT)= "CD_NOM"
+# 
+# # Jointure avec la BDD_FIHCE_FLORE
+# library(tidyverse)
+# TAB_EXTRACT = left_join(ESP_TO_EXTRACT,BDD_FICHE_FLORE,by="CD_NOM")
+```
+
+```{r content2, include=FALSE}
+library(readxl)
+baseflorTAXREFv16 <- read.csv("~/GitHub/FICHE_FLORE/01_REF/TAXREF-MATCH/baseflorTAXREFv16.csv", sep=";")
+ESP_TO_EXTRACT = read.table("clipboard")
+colnames(ESP_TO_EXTRACT)= "CD_NOM"
+ESP_TO_EXTRACT$CD_NOM = as.character(ESP_TO_EXTRACT$CD_NOM)
+
+# Jointure avec la BDD_FIHCE_FLORE
+library(tidyverse)
+TAB_EXTRACT = left_join(ESP_TO_EXTRACT,baseflorTAXREFv16,by="CD_NOM")
+
+TAB_EXTRACT_WORD = TAB_EXTRACT %>% select(CD_NOM,NOM_SCIENTIFIQUE,NOM_VALIDE,code_CATMINAT,CHOROLOGIE,floraison,CARACTERISATION_ECOLOGIQUE_.HABITAT_OPTIMAL.)
+```
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+library(knitr)
+kable(TAB_EXTRACT_WORD)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
