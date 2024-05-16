@@ -1,0 +1,9 @@
+Reformule et corrige se texte généré automatiquement.
+Suivre quelques consignes :
+- Ne pas écrire Zones Naturelles d'Intérêt Écologique, Faunistique et Floristique en entier, mais juste mettre ZNIEFF. 
+Pareil pour le CBN. Reformuler les codes des listes rouges (LC, NT, VU, EN, CR, DD etc...) par leur signification française (ex : LC = peu concernée).
+- Remplace Le/La par le bon déterminentRetirer les noms d'auteur et la date après les noms scientifique des epsèces.Reformule le texte pour qu'il soit fluide et non répétitif.
+ Le texte à corriger :
+ 
+ 
+="Le/La "&SI(ESTERREUR(GAUCHE(D2;CHERCHE(",";D2)-1));D2;GAUCHE(D2;CHERCHE(",";D2)-1))&" ("&C2&") est une espèce d'intérêt patrimonial d'enjeu "&M2&". "&SI(G2="-";"";"Elle est classée directive habitat"&G2)&SI(H2="-";"";"Elle est "&H2&" sur la liste rouge nationale. ")&SI(I2="-";"";"Elle est "&I2&" sur la liste rouge régionale. ")&SI(J2="-";"";"Elle est déterminante ZNIEFF ("&J2&"). ")&SI(K2="-";"";"Elle est classée d'enjeu "&K2&" par le CBN. ")&SI(L2="-";"";" Il s'agit d'une espèce protégée ("&L2&"). ")&SI(U2="";"";"On la retrouve dans les "&U2&".")&SI(T2="";"";"Elle fleurit de "&T2&".")
